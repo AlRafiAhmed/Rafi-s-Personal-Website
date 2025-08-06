@@ -63,6 +63,10 @@
                         navbarSlide: {
                             '0%': { transform: 'translateY(-100%)' },
                             '100%': { transform: 'translateY(0)' }
+                        },
+                        profileFadeIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.75) rotate(-10deg)' },
+                            '100%': { opacity: '1', transform: 'scale(1) rotate(0deg)' }
                         }
                     }
                 }
@@ -229,11 +233,12 @@
                                 <!-- Animated Background Ring -->
                                 <div class="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-500 rounded-full animate-spin" style="animation-duration: 8s;"></div>
                                 <div class="absolute inset-2 bg-white dark:bg-gray-900 rounded-full"></div>
-                                
                                 <!-- Profile Photo -->
-                                <img src="https://i.ibb.co/YyQRqCq/profile-photo.jpg" 
+                                <img src="./Al RAfi.jpg" 
                                      alt="Al Rafi Ahmed" 
-                                     class="absolute inset-4 w-full h-full object-cover rounded-full shadow-2xl hover:scale-105 transition-transform duration-500">
+                                     class="absolute inset-4 w-full h-full object-cover rounded-full shadow-2xl hover:scale-105 transition-all duration-500"
+                                     onload="this.style.opacity='1'; this.style.transform='scale(1)'"
+                                     style="opacity: 0; transform: scale(0.75); transition: all 1s ease-out;">
                                 
                                 <!-- Floating Elements -->
                                 <div class="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full animate-bounce-gentle"></div>
