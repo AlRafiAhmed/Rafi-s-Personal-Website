@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Rafi Ahmed - About Me</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 1s ease-out',
+                        'slide-down': 'slideDown 0.5s ease-out',
+                        'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'scale-in': 'scaleIn 0.8s ease-out',
+                        'navbar-slide': 'navbarSlide 0.3s ease-out',
+                        'stagger': 'stagger 0.6s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        bounceGentle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '33%': { transform: 'translateY(-30px) rotate(5deg)' },
+                            '66%': { transform: 'translateY(-20px) rotate(-5deg)' }
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        navbarSlide: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        stagger: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-500">
+    <!-- Animated Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 animate-navbar-slide">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                        Al Rafi Ahmed
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Home
+                        </a>
+                        <a href="about.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 border-b-2 border-blue-600">
+                            About Me
+                        </a>
+                        <a href="projects.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Projects
+                        </a>
+                        <a href="gallery.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Gallery
+                        </a>
+                        <a href="travel.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Travel
+                        </a>
+                        <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 hover:scale-110">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2L13.09 8.26L20 9L14 14.74L15.18 21.02L10 17.77L4.82 21.02L6 14.74L0 9L6.91 8.26L10 2Z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 animate-slide-down">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Home
+                </a>
+                <a href="about.html" class="text-blue-600 dark:text-blue-400 block px-3 py-2 rounded-md text-base font-medium border-l-4 border-blue-600 bg-blue-50 dark:bg-blue-900/20">
+                    About Me
+                </a>
+                <a href="projects.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Projects
+                </a>
+                <a href="gallery.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Gallery
+                </a>
+                <a href="travel.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Travel
+                </a>
+                <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="relative py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center animate-fade-in">
+                    <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                        About <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Me</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                        Get to know more about my journey, background, and passion for technology
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section class="py-20 bg-white dark:bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Profile Image -->
+                    <div class="flex justify-center lg:justify-start">
+                        <div class="relative animate-scale-in">
+                            <div class="w-80 h-80 lg:w-96 lg:h-96">
+                                <div class="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-500 rounded-2xl transform rotate-6 animate-float"></div>
+                                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCABgAGADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDJr28w5+4nLdKNrVXuZCqnAHr3p26kw2kOr6p/M/KOw4PoaMx4/h+hGlq7jb/ZXdhhHU/TjvWr8UlR3yrw1v5/kZZk5RWnvfLe9vzseewgmtnZJTHsrJLsJHqM1Yx80+jdqFtQ/V7nNPr3QcGvKGHb0x+OOldNKO6oKgEYQcYA4xxUGNAXjD3OP/1v/r1d7xGynCdQOMcDHFJkmvN3Qd+/H5ULFpO5xT8MQ+gO/OGPdqfHLnOQRjOO9VSr+OC3frVpSHQD5z7dfxPqKvw5xvgSfivwqkZJJozp5lBklqq5PfFRHEeCG6j8j6VQmKpg+c5IOOPfGRWfPJEjbTrOx2/KrPeHM38LF9t+kJ5kNmP+mmPU9O/apGjiZAyMNvJcZPGTgnB7elQ3FxKGjj2PISeSq52++DxULXUi3EFxA2yBiwzlSZDnJINZfvJGiw6Jl5dXWNcylOE/UZ5APFczr3jG1aJnEgGGG4LggdOPY0/xpPdDWrpZJG8vBGAcdc8+pplt4Ss73TozNAjMydSMkGreBnGdNUVpe6YtdbXGfpV2R8o6sYwR5e8q23O7GeagtlmP2fzR5Y84Dn8KyLm2aBJHkhZQrZJK44ppPl/w6fy50+Xv8yW4YieR4wOQpxxnFMbhkztHGCueh9MU6R3mLuzs7N1Jqa8t7G3m8kKqyZ+YkkqKzlK17aHLiKLlUlJp6mjJJK7ysZJAwG2Y7cDvjFSGZP+Wfb+6eMZqpv3dH/9ap2kkP8AEfxNMSjfQZrCPtm6Vj/vKegpcCeNiE+VujADk9Qajzz/AAj8aZQN1vLg5eR2C7jglSM4wd/HSq+nTiK8Qm7RnVVZWQDBXvgdqUABhwOh4HFOFNJdOhTnTbgryv8AkUJJAJXYyMGOd2SSO5zSLNA0Zd5U8vdtA5ySR0OKKbIjNiNGVRlcjvzSKxT++Pq8/wCi1JR5KpIf/9k=" 
+                                     alt="Al Rafi Ahmed" 
+                                     class="relative w-full h-full object-cover rounded-2xl shadow-2xl z-10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Information -->
+                    <div class="animate-slide-up">
+                        <div class="bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 p-8 rounded-2xl shadow-xl">
+                            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Personal Information</h2>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4 animate-stagger" style="animation-delay: 0.1s;">
+                                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Full Name</p>
+                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">Al Rafi Ahmed</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-4 animate-stagger" style="animation-delay: 0.2s;">
+                                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a4 4 0 118 0v4m-4 3v6m-4-6h8" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Age</p>
+                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">24 years old</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-4 animate-stagger" style="animation-delay: 0.3s;">
+                                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">University</p>
+                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">IUBAT</p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">International University of Business Agriculture and Technology</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-4 animate-stagger" style="animation-delay: 0.4s;">
+                                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Current Thesis</p>
+                                        <p class="text-lg font-semibold text-gray-900 dark:text-white">Detection and Classification of Financial Scams in SMS or Chat Messages</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="py-20 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 animate-fade-in">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Educational Journey</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-300">My academic background and achievements</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- School -->
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 animate-slide-up">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-4">
+                                <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Secondary School</h3>
+                                <p class="text-gray-600 dark:text-gray-300">2018 - 2020</p>
+                            </div>
+                        </div>
+                        <p class="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-2">Gaurichanna Nawab Sirajul Islam Secondary School</p>
+                        <p class="text-gray-600 dark:text-gray-300">Completed my secondary education with a focus on science and mathematics, building a strong foundation for my future studies.</p>
+                    </div>
+
+                    <!-- College -->
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 animate-slide-up" style="animation-delay: 0.2s;">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mr-4">
+                                <svg class="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Higher Secondary</h3>
+                                <p class="text-gray-600 dark:text-gray-300">2020 - 2022</p>
+                            </div>
+                        </div>
+                        <p class="text-lg font-semibold text-purple-600 dark:text-purple-400 mb-2">Amritalal Dey Mohabidyalay</p>
+                        <p class="text-gray-600 dark:text-gray-300">Specialized in science stream, developing strong analytical and problem-solving skills that would later support my technology career.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="py-20 bg-white dark:bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 animate-fade-in">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Technical Skills</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-300">Technologies and tools I work with</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Frontend -->
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Frontend Development</h3>
+                            <div class="space-y-2">
+                                <span class="inline-block bg-blue-200 dark:bg-blue-700 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm">React</span>
+                                <span class="inline-block bg-blue-200 dark:bg-blue-700 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                                <span class="inline-block bg-blue-200 dark:bg-blue-700 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
+                                <span class="inline-block bg-blue-200 dark:bg-blue-700 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm">HTML5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend -->
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in" style="animation-delay: 0.2s;">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Backend Development</h3>
+                            <div class="space-y-2">
+                                <span class="inline-block bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm">Python</span>
+                                <span class="inline-block bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm">C#</span>
+                                <span class="inline-block bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm">.NET</span>
+                                <span class="inline-block bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm">Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI/ML -->
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in" style="animation-delay: 0.4s;">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">AI & Machine Learning</h3>
+                            <div class="space-y-2">
+                                <span class="inline-block bg-purple-200 dark:bg-purple-700 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm">TensorFlow</span>
+                                <span class="inline-block bg-purple-200 dark:bg-purple-700 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm">PyTorch</span>
+                                <span class="inline-block bg-purple-200 dark:bg-purple-700 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm">OpenCV</span>
+                                <span class="inline-block bg-purple-200 dark:bg-purple-700 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm">NLP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family Section -->
+        <section class="py-20 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 animate-fade-in">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Family</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-300">The people who inspire and support me</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl max-w-4xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Parents -->
+                        <div class="text-center animate-slide-up">
+                            <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Parents</h3>
+                            <p class="text-lg text-blue-600 dark:text-blue-400 font-semibold">Md. Alamgir Hossain & Hasnat Jahan</p>
+                            <p class="text-gray-600 dark:text-gray-300 mt-2">Both Primary School Head Teachers</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">My parents have been my biggest inspiration, teaching me the value of education and hard work through their dedication to nurturing young minds.</p>
+                        </div>
+
+                        <!-- Brother -->
+                        <div class="text-center animate-slide-up" style="animation-delay: 0.2s;">
+                            <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Younger Brother</h3>
+                            <p class="text-lg text-green-600 dark:text-green-400 font-semibold">Sifatullah Ahmed</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">My younger brother who keeps me motivated to be a good role model and achieve greater heights in my career and personal life.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-gray-400">&copy; 2025 Al Rafi Ahmed. All rights reserved.</p>
+                <p class="text-gray-500 text-sm mt-2">Built with ❤️ using modern web technologies</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+        } else {
+            html.classList.remove('dark');
+            lightIcon.classList.remove('hidden');
+            darkIcon.classList.add('hidden');
+        }
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            } else {
+                localStorage.setItem('theme', 'light');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/95', 'dark:bg-gray-900/95', 'shadow-lg');
+                navbar.classList.remove('bg-white/90', 'dark:bg-gray-900/90');
+            } else {
+                navbar.classList.remove('bg-white/95', 'dark:bg-gray-900/95', 'shadow-lg');
+                navbar.classList.add('bg-white/90', 'dark:bg-gray-900/90');
+            }
+        });
+
+        // Page load animations
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>

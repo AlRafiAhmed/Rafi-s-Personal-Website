@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Rafi Ahmed - Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 1s ease-out',
+                        'slide-down': 'slideDown 0.5s ease-out',
+                        'scale-in': 'scaleIn 0.8s ease-out',
+                        'navbar-slide': 'navbarSlide 0.3s ease-out',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
+                        'modal-appear': 'modalAppear 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        navbarSlide: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.1)' }
+                        },
+                        modalAppear: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-500">
+    <!-- Animated Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 animate-navbar-slide">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                        Al Rafi Ahmed
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Home
+                        </a>
+                        <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            About Me
+                        </a>
+                        <a href="projects.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Projects
+                        </a>
+                        <a href="gallery.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 border-b-2 border-blue-600">
+                            Gallery
+                        </a>
+                        <a href="travel.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Travel
+                        </a>
+                        <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 hover:scale-110">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2L13.09 8.26L20 9L14 14.74L15.18 21.02L10 17.77L4.82 21.02L6 14.74L0 9L6.91 8.26L10 2Z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 animate-slide-down">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Home
+                </a>
+                <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    About Me
+                </a>
+                <a href="projects.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Projects
+                </a>
+                <a href="gallery.html" class="text-blue-600 dark:text-blue-400 block px-3 py-2 rounded-md text-base font-medium border-l-4 border-blue-600 bg-blue-50 dark:bg-blue-900/20">
+                    Gallery
+                </a>
+                <a href="travel.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Travel
+                </a>
+                <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="relative py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center animate-fade-in">
+                    <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                        Photo <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Gallery</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                        Memories from my school and college journey - moments that shaped who I am today
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- School Days Section -->
+        <section class="py-20 bg-white dark:bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 animate-fade-in">
+                    <div class="flex items-center justify-center mb-4">
+                        <svg class="w-12 h-12 text-blue-600 dark:text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <h2 class="text-4xl font-bold text-gray-900 dark:text-white">School Days</h2>
+                    </div>
+                    <p class="text-lg text-gray-600 dark:text-gray-300">Memories from Gaurichanna Nawab Sirajul Islam Secondary School</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- School Photo 1 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" onclick="openModal('https://via.placeholder.com/600x400/667eea/ffffff?text=School+Graduation', 'Graduation ceremony at Gaurichanna Nawab Sirajul Islam Secondary School')">
+                        <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=School+Graduation" alt="School Graduation" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">Graduation Ceremony</h3>
+                                <p class="text-sm opacity-90">A milestone moment in my educational journey</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- School Photo 2 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" style="animation-delay: 0.1s;" onclick="openModal('https://via.placeholder.com/600x400/764ba2/ffffff?text=School+Friends', 'Cherished moments with school friends and classmates')">
+                        <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=School+Friends" alt="School Friends" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">School Friends</h3>
+                                <p class="text-sm opacity-90">Friendships that last a lifetime</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- School Photo 3 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" style="animation-delay: 0.2s;" onclick="openModal('https://via.placeholder.com/600x400/f093fb/ffffff?text=Sports+Day', 'Exciting sports day events and competitions at school')">
+                        <img src="https://via.placeholder.com/400x300/f093fb/ffffff?text=Sports+Day" alt="Sports Day" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">Sports Day</h3>
+                                <p class="text-sm opacity-90">Athletic competitions and team spirit</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- School Photo 4 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" style="animation-delay: 0.3s;" onclick="openModal('https://via.placeholder.com/600x400/f5576c/ffffff?text=Science+Fair', 'Participating in school science fair and exhibitions')">
+                        <img src="https://via.placeholder.com/400x300/f5576c/ffffff?text=Science+Fair" alt="Science Fair" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">Science Fair</h3>
+                                <p class="text-sm opacity-90">Early passion for science and technology</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- School Photo 5 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" style="animation-delay: 0.4s;" onclick="openModal('https://via.placeholder.com/600x400/667eea/ffffff?text=Class+Photo', 'Class photo with teachers and fellow students')">
+                        <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Class+Photo" alt="Class Photo" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">Class Photo</h3>
+                                <p class="text-sm opacity-90">Memories with teachers and classmates</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- School Photo 6 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" style="animation-delay: 0.5s;" onclick="openModal('https://via.placeholder.com/600x400/764ba2/ffffff?text=Prize+Giving', 'Award ceremony and prize distribution at school')">
+                        <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=Prize+Giving" alt="Prize Giving" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">Prize Giving</h3>
+                                <p class="text-sm opacity-90">Recognition for academic achievements</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- College Life Section -->
+        <section class="py-20 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 animate-fade-in">
+                    <div class="flex items-center justify-center mb-4">
+                        <svg class="w-12 h-12 text-purple-600 dark:text-purple-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                        <h2 class="text-4xl font-bold text-gray-900 dark:text-white">College Life</h2>
+                    </div>
+                    <p class="text-lg text-gray-600 dark:text-gray-300">Adventures at Amritalal Dey Mohabidyalay</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- College Photo 1 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" onclick="openModal('https://via.placeholder.com/600x400/f093fb/ffffff?text=College+Friends', 'New friendships and bonds formed during college years')">
+                        <img src="https://via.placeholder.com/400x300/f093fb/ffffff?text=College+Friends" alt="College Friends" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">College Friends</h3>
+                                <p class="text-sm opacity-90">New connections and lasting friendships</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- College Photo 2 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" style="animation-delay: 0.1s;" onclick="openModal('https://via.placeholder.com/600x400/f5576c/ffffff?text=Lab+Work', 'Hands-on laboratory work and practical learning')">
+                        <img src="https://via.placeholder.com/400x300/f5576c/ffffff?text=Lab+Work" alt="Lab Work" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">Laboratory Work</h3>
+                                <p class="text-sm opacity-90">Practical learning and experiments</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- College Photo 3 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" style="animation-delay: 0.2s;" onclick="openModal('https://via.placeholder.com/600x400/667eea/ffffff?text=Study+Group', 'Collaborative study sessions with college mates')">
+                        <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Study+Group" alt="Study Group" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">Study Groups</h3>
+                                <p class="text-sm opacity-90">Collaborative learning sessions</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- College Photo 4 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" style="animation-delay: 0.3s;" onclick="openModal('https://via.placeholder.com/600x400/764ba2/ffffff?text=College+Event', 'Cultural events and festivities at college')">
+                        <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=College+Event" alt="College Event" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">College Events</h3>
+                                <p class="text-sm opacity-90">Cultural programs and celebrations</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- College Photo 5 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" style="animation-delay: 0.4s;" onclick="openModal('https://via.placeholder.com/600x400/f093fb/ffffff?text=Campus+Life', 'Daily life and moments around the college campus')">
+                        <img src="https://via.placeholder.com/400x300/f093fb/ffffff?text=Campus+Life" alt="Campus Life" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">Campus Life</h3>
+                                <p class="text-sm opacity-90">Everyday moments on campus</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- College Photo 6 -->
+                    <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer animate-scale-in" style="animation-delay: 0.5s;" onclick="openModal('https://via.placeholder.com/600x400/f5576c/ffffff?text=Farewell', 'Emotional farewell moments as college comes to an end')">
+                        <img src="https://via.placeholder.com/400x300/f5576c/ffffff?text=Farewell" alt="Farewell" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 right-4 text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-semibold text-lg mb-1">Farewell</h3>
+                                <p class="text-sm opacity-90">Goodbye to cherished college days</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Photo Modal -->
+    <div id="photo-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
+        <div class="relative max-w-5xl max-h-full animate-modal-appear">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition duration-300 z-10 bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center">
+                &times;
+            </button>
+            <img id="modal-image" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg">
+            <div class="absolute bottom-4 left-4 right-4 text-center bg-black bg-opacity-70 rounded-lg p-4">
+                <p id="modal-caption" class="text-white text-lg font-semibold"></p>
+            </div>
+            <!-- Navigation Arrows -->
+            <button id="prev-btn" onclick="previousImage()" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-gray-300 transition duration-300 bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center">
+                &#8249;
+            </button>
+            <button id="next-btn" onclick="nextImage()" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-gray-300 transition duration-300 bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center">
+                &#8250;
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-gray-400">&copy; 2025 Al Rafi Ahmed. All rights reserved.</p>
+                <p class="text-gray-500 text-sm mt-2">Built with ❤️ using modern web technologies</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery images data
+        const galleryImages = [
+            {
+                src: 'https://via.placeholder.com/600x400/667eea/ffffff?text=School+Graduation',
+                caption: 'Graduation ceremony at Gaurichanna Nawab Sirajul Islam Secondary School'
+            },
+            {
+                src: 'https://via.placeholder.com/600x400/764ba2/ffffff?text=School+Friends',
+                caption: 'Cherished moments with school friends and classmates'
+            },
+            {
+                src: 'https://via.placeholder.com/600x400/f093fb/ffffff?text=Sports+Day',
+                caption: 'Exciting sports day events and competitions at school'
+            },
+            {
+                src: 'https://via.placeholder.com/600x400/f5576c/ffffff?text=Science+Fair',
+                caption: 'Participating in school science fair and exhibitions'
+            },
+            {
+                src: 'https://via.placeholder.com/600x400/667eea/ffffff?text=Class+Photo',
+                caption: 'Class photo with teachers and fellow students'
+            },
+            {
+                src: 'https://via.placeholder.com/600x400/764ba2/ffffff?text=Prize+Giving',
+                caption: 'Award ceremony and prize distribution at school'
+            },
+            {
+                src: 'https://via.placeholder.com/600x400/f093fb/ffffff?text=College+Friends',
+                caption: 'New friendships and bonds formed during college years'
+            },
+            {
+                src: 'https://via.placeholder.com/600x400/f5576c/ffffff?text=Lab+Work',
+                caption: 'Hands-on laboratory work and practical learning'
+            },
+            {
+                src: 'https://via.placeholder.com/600x400/667eea/ffffff?text=Study+Group',
+                caption: 'Collaborative study sessions with college mates'
+            },
+            {
+                src: 'https://via.placeholder.com/600x400/764ba2/ffffff?text=College+Event',
+                caption: 'Cultural events and festivities at college'
+            },
+            {
+                src: 'https://via.placeholder.com/600x400/f093fb/ffffff?text=Campus+Life',
+                caption: 'Daily life and moments around the college campus'
+            },
+            {
+                src: 'https://via.placeholder.com/600x400/f5576c/ffffff?text=Farewell',
+                caption: 'Emotional farewell moments as college comes to an end'
+            }
+        ];
+
+        let currentImageIndex = 0;
+
+        // Photo Modal Functions
+        function openModal(imageSrc, caption) {
+            const modal = document.getElementById('photo-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalCaption = document.getElementById('modal-caption');
+            
+            // Find the current image index
+            currentImageIndex = galleryImages.findIndex(img => img.src === imageSrc);
+            
+            modalImage.src = imageSrc;
+            modalCaption.textContent = caption;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('photo-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateModalImage();
+        }
+
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateModalImage();
+        }
+
+        function updateModalImage() {
+            const modalImage = document.getElementById('modal-image');
+            const modalCaption = document.getElementById('modal-caption');
+            const currentImage = galleryImages[currentImageIndex];
+            
+            modalImage.src = currentImage.src;
+            modalCaption.textContent = currentImage.caption;
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            } else if (e.key === 'ArrowLeft') {
+                previousImage();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            }
+        });
+
+        // Close modal on backdrop click
+        document.getElementById('photo-modal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeModal();
+            }
+        });
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+        } else {
+            html.classList.remove('dark');
+            lightIcon.classList.remove('hidden');
+            darkIcon.classList.add('hidden');
+        }
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            } else {
+                localStorage.setItem('theme', 'light');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/95', 'dark:bg-gray-900/95', 'shadow-lg');
+                navbar.classList.remove('bg-white/90', 'dark:bg-gray-900/90');
+            } else {
+                navbar.classList.remove('bg-white/95', 'dark:bg-gray-900/95', 'shadow-lg');
+                navbar.classList.add('bg-white/90', 'dark:bg-gray-900/90');
+            }
+        });
+
+        // Page load animations
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>

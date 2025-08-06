@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Rafi Ahmed - Travel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 1s ease-out',
+                        'slide-down': 'slideDown 0.5s ease-out',
+                        'scale-in': 'scaleIn 0.8s ease-out',
+                        'navbar-slide': 'navbarSlide 0.3s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'modal-appear': 'modalAppear 0.3s ease-out',
+                        'destination-hover': 'destinationHover 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        navbarSlide: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '33%': { transform: 'translateY(-30px) rotate(2deg)' },
+                            '66%': { transform: 'translateY(-15px) rotate(-2deg)' }
+                        },
+                        modalAppear: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        destinationHover: {
+                            '0%': { transform: 'scale(1) rotate(0deg)' },
+                            '100%': { transform: 'scale(1.05) rotate(1deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-500">
+    <!-- Animated Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 animate-navbar-slide">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                        Al Rafi Ahmed
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Home
+                        </a>
+                        <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            About Me
+                        </a>
+                        <a href="projects.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Projects
+                        </a>
+                        <a href="gallery.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Gallery
+                        </a>
+                        <a href="travel.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 border-b-2 border-blue-600">
+                            Travel
+                        </a>
+                        <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 hover:scale-110">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2L13.09 8.26L20 9L14 14.74L15.18 21.02L10 17.77L4.82 21.02L6 14.74L0 9L6.91 8.26L10 2Z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 animate-slide-down">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Home
+                </a>
+                <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    About Me
+                </a>
+                <a href="projects.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Projects
+                </a>
+                <a href="gallery.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Gallery
+                </a>
+                <a href="travel.html" class="text-blue-600 dark:text-blue-400 block px-3 py-2 rounded-md text-base font-medium border-l-4 border-blue-600 bg-blue-50 dark:bg-blue-900/20">
+                    Travel
+                </a>
+                <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="relative py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 overflow-hidden">
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0">
+                <div class="absolute top-10 left-10 w-32 h-32 bg-blue-300 dark:bg-blue-600 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-xl opacity-70 animate-float"></div>
+                <div class="absolute bottom-10 right-10 w-40 h-40 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-xl opacity-70 animate-float" style="animation-delay: 2s;"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 bg-pink-300 dark:bg-pink-600 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-xl opacity-70 animate-float" style="animation-delay: 4s;"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center animate-fade-in">
+                    <div class="flex items-center justify-center mb-6">
+                        <svg class="w-16 h-16 text-blue-600 dark:text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white">
+                            Travel <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Adventures</span>
+                        </h1>
+                    </div>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                        Exploring the beautiful landscapes and rich culture of Bangladesh - from pristine beaches to ancient forests
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Travel Destinations Section -->
+        <section class="py-20 bg-white dark:bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 animate-fade-in">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Travel Diary</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300">Documenting beautiful moments from across Bangladesh</p>
+                </div>
+
+                <div class="space-y-20">
+                    <!-- Cox's Bazar -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center animate-slide-up">
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
+                            <div class="relative bg-white dark:bg-gray-700 rounded-2xl p-2 shadow-2xl">
+                                <img src="https://via.placeholder.com/600x400/0ea5e9/ffffff?text=Cox's+Bazar+Beach" alt="Cox's Bazar Beach" class="w-full h-80 object-cover rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openModal('https://via.placeholder.com/800x600/0ea5e9/ffffff?text=Cox\'s+Bazar+Beach', 'Cox\'s Bazar - The world\'s longest natural sea beach stretching over 120 kilometers along the Bay of Bengal')">
+                                <div class="absolute inset-2 bg-gradient-to-t from-black/50 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                    <div class="p-6 text-white">
+                                        <h3 class="text-2xl font-bold mb-2">Cox's Bazar Beach</h3>
+                                        <p class="text-sm opacity-90">World's longest natural sea beach</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <svg class="w-8 h-8 text-blue-600 dark:text-blue-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <h3 class="text-3xl font-bold text-gray-900 dark:text-white">Cox's Bazar</h3>
+                            </div>
+                            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                My unforgettable trip to Cox's Bazar, home to the world's longest natural sea beach. The endless stretch of golden sand meeting the azure waters of the Bay of Bengal created a breathtaking panorama. Watching the sunrise over the ocean was a truly magical experience.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                                    <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">120km</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">Beach Length</div>
+                                </div>
+                                <div class="text-center p-4 bg-cyan-50 dark:bg-cyan-900/20 rounded-lg">
+                                    <div class="text-2xl font-bold text-cyan-600 dark:text-cyan-400">3 Days</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">Trip Duration</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm">Beach</span>
+                                <span class="bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-200 px-3 py-1 rounded-full text-sm">Sunset</span>
+                                <span class="bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-200 px-3 py-1 rounded-full text-sm">Ocean Views</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sundarbans -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center animate-slide-up">
+                        <div class="lg:order-2 relative group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500"></div>
+                            <div class="relative bg-white dark:bg-gray-700 rounded-2xl p-2 shadow-2xl">
+                                <img src="https://via.placeholder.com/600x400/059669/ffffff?text=Sundarbans+Forest" alt="Sundarbans Forest" class="w-full h-80 object-cover rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openModal('https://via.placeholder.com/800x600/059669/ffffff?text=Sundarbans+Forest', 'Sundarbans - The world\'s largest mangrove forest and home to the majestic Bengal tigers')">
+                                <div class="absolute inset-2 bg-gradient-to-t from-black/50 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                    <div class="p-6 text-white">
+                                        <h3 class="text-2xl font-bold mb-2">Sundarbans Forest</h3>
+                                        <p class="text-sm opacity-90">World's largest mangrove forest</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:order-1">
+                            <div class="flex items-center mb-4">
+                                <svg class="w-8 h-8 text-green-600 dark:text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                                </svg>
+                                <h3 class="text-3xl font-bold text-gray-900 dark:text-white">Sundarbans</h3>
+                            </div>
+                            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                An extraordinary journey through the Sundarbans, the world's largest mangrove forest. This UNESCO World Heritage site is home to the magnificent Bengal tigers and countless species of wildlife. The intricate network of waterways and dense forest canopy created an almost mystical atmosphere.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                    <div class="text-2xl font-bold text-green-600 dark:text-green-400">10,000</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">km² Area</div>
+                                </div>
+                                <div class="text-center p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
+                                    <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">2 Days</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">Trip Duration</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm">Mangrove</span>
+                                <span class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-200 px-3 py-1 rounded-full text-sm">Wildlife</span>
+                                <span class="bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-200 px-3 py-1 rounded-full text-sm">UNESCO Site</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sylhet -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center animate-slide-up">
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
+                            <div class="relative bg-white dark:bg-gray-700 rounded-2xl p-2 shadow-2xl">
+                                <img src="https://via.placeholder.com/600x400/8b5cf6/ffffff?text=Sylhet+Tea+Gardens" alt="Sylhet Tea Gardens" class="w-full h-80 object-cover rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openModal('https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Sylhet+Tea+Gardens', 'Sylhet - Rolling tea gardens and scenic hills of northeastern Bangladesh')">
+                                <div class="absolute inset-2 bg-gradient-to-t from-black/50 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                    <div class="p-6 text-white">
+                                        <h3 class="text-2xl font-bold mb-2">Sylhet Tea Gardens</h3>
+                                        <p class="text-sm opacity-90">Rolling hills and tea plantations</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <svg class="w-8 h-8 text-purple-600 dark:text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                </svg>
+                                <h3 class="text-3xl font-bold text-gray-900 dark:text-white">Sylhet</h3>
+                            </div>
+                            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                The scenic beauty of Sylhet left me spellbound. The rolling tea gardens stretching as far as the eye can see, surrounded by hills and valleys, created a perfect landscape for reflection and photography. The fresh mountain air and the aroma of tea leaves made this trip truly refreshing.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="text-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                    <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">100+</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">Tea Gardens</div>
+                                </div>
+                                <div class="text-center p-4 bg-pink-50 dark:bg-pink-900/20 rounded-lg">
+                                    <div class="text-2xl font-bold text-pink-600 dark:text-pink-400">4 Days</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">Trip Duration</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm">Tea Gardens</span>
+                                <span class="bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-200 px-3 py-1 rounded-full text-sm">Hills</span>
+                                <span class="bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Nature</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chittagong -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center animate-slide-up">
+                        <div class="lg:order-2 relative group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-500 rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500"></div>
+                            <div class="relative bg-white dark:bg-gray-700 rounded-2xl p-2 shadow-2xl">
+                                <img src="https://via.placeholder.com/600x400/f97316/ffffff?text=Chittagong+Hills" alt="Chittagong Hills" class="w-full h-80 object-cover rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openModal('https://via.placeholder.com/800x600/f97316/ffffff?text=Chittagong+Hills', 'Chittagong Hill Tracts - Mountainous region with diverse tribal culture and stunning landscapes')">
+                                <div class="absolute inset-2 bg-gradient-to-t from-black/50 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                    <div class="p-6 text-white">
+                                        <h3 class="text-2xl font-bold mb-2">Chittagong Hills</h3>
+                                        <p class="text-sm opacity-90">Hill tracts and tribal culture</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:order-1">
+                            <div class="flex items-center mb-4">
+                                <svg class="w-8 h-8 text-orange-600 dark:text-orange-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                                </svg>
+                                <h3 class="text-3xl font-bold text-gray-900 dark:text-white">Chittagong Hill Tracts</h3>
+                            </div>
+                            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                Exploring the Chittagong Hill Tracts was like stepping into a different world. The mountainous terrain, rich tribal culture, and diverse ecosystems provided a unique cultural and natural experience. The warm hospitality of the local communities made this journey even more memorable.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="text-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                                    <div class="text-2xl font-bold text-orange-600 dark:text-orange-400">13,295</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">km² Area</div>
+                                </div>
+                                <div class="text-center p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                                    <div class="text-2xl font-bold text-red-600 dark:text-red-400">5 Days</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">Trip Duration</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 px-3 py-1 rounded-full text-sm">Mountains</span>
+                                <span class="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 px-3 py-1 rounded-full text-sm">Culture</span>
+                                <span class="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 px-3 py-1 rounded-full text-sm">Adventure</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Travel Stats Section -->
+        <section class="py-20 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 animate-fade-in">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Travel Statistics</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300">My journey across Bangladesh in numbers</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="text-center group hover:scale-110 transition-transform duration-300 animate-scale-in">
+                        <div class="w-20 h-20 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow duration-300">
+                            <svg class="w-10 h-10 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            </svg>
+                        </div>
+                        <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">4</div>
+                        <div class="text-gray-600 dark:text-gray-400">Destinations</div>
+                    </div>
+
+                    <div class="text-center group hover:scale-110 transition-transform duration-300 animate-scale-in" style="animation-delay: 0.1s;">
+                        <div class="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow duration-300">
+                            <svg class="w-10 h-10 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">14</div>
+                        <div class="text-gray-600 dark:text-gray-400">Days Traveled</div>
+                    </div>
+
+                    <div class="text-center group hover:scale-110 transition-transform duration-300 animate-scale-in" style="animation-delay: 0.2s;">
+                        <div class="w-20 h-20 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow duration-300">
+                            <svg class="w-10 h-10 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">200+</div>
+                        <div class="text-gray-600 dark:text-gray-400">Photos Taken</div>
+                    </div>
+
+                    <div class="text-center group hover:scale-110 transition-transform duration-300 animate-scale-in" style="animation-delay: 0.3s;">
+                        <div class="w-20 h-20 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow duration-300">
+                            <svg class="w-10 h-10 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </div>
+                        <div class="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-2">∞</div>
+                        <div class="text-gray-600 dark:text-gray-400">Memories</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Photo Modal -->
+    <div id="photo-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
+        <div class="relative max-w-5xl max-h-full animate-modal-appear">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition duration-300 z-10 bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center">
+                &times;
+            </button>
+            <img id="modal-image" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg">
+            <div class="absolute bottom-4 left-4 right-4 text-center bg-black bg-opacity-70 rounded-lg p-4">
+                <p id="modal-caption" class="text-white text-lg font-semibold"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-gray-400">&copy; 2025 Al Rafi Ahmed. All rights reserved.</p>
+                <p class="text-gray-500 text-sm mt-2">Built with ❤️ using modern web technologies</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Photo Modal Functions
+        function openModal(imageSrc, caption) {
+            const modal = document.getElementById('photo-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalCaption = document.getElementById('modal-caption');
+            
+            modalImage.src = imageSrc;
+            modalCaption.textContent = caption;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('photo-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Close modal on backdrop click
+        document.getElementById('photo-modal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeModal();
+            }
+        });
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+        } else {
+            html.classList.remove('dark');
+            lightIcon.classList.remove('hidden');
+            darkIcon.classList.add('hidden');
+        }
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            } else {
+                localStorage.setItem('theme', 'light');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/95', 'dark:bg-gray-900/95', 'shadow-lg');
+                navbar.classList.remove('bg-white/90', 'dark:bg-gray-900/90');
+            } else {
+                navbar.classList.remove('bg-white/95', 'dark:bg-gray-900/95', 'shadow-lg');
+                navbar.classList.add('bg-white/90', 'dark:bg-gray-900/90');
+            }
+        });
+
+        // Page load animations
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Rafi Ahmed - Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 1s ease-out',
+                        'slide-down': 'slideDown 0.5s ease-out',
+                        'scale-in': 'scaleIn 0.8s ease-out',
+                        'navbar-slide': 'navbarSlide 0.3s ease-out',
+                        'hover-float': 'hoverFloat 0.3s ease-out',
+                        'card-hover': 'cardHover 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        navbarSlide: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        hoverFloat: {
+                            '0%': { transform: 'translateY(0)' },
+                            '100%': { transform: 'translateY(-10px)' }
+                        },
+                        cardHover: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.05)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-500">
+    <!-- Animated Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 animate-navbar-slide">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                        Al Rafi Ahmed
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Home
+                        </a>
+                        <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            About Me
+                        </a>
+                        <a href="projects.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 border-b-2 border-blue-600">
+                            Projects
+                        </a>
+                        <a href="gallery.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Gallery
+                        </a>
+                        <a href="travel.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Travel
+                        </a>
+                        <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 hover:scale-110">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2L13.09 8.26L20 9L14 14.74L15.18 21.02L10 17.77L4.82 21.02L6 14.74L0 9L6.91 8.26L10 2Z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 animate-slide-down">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Home
+                </a>
+                <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    About Me
+                </a>
+                <a href="projects.html" class="text-blue-600 dark:text-blue-400 block px-3 py-2 rounded-md text-base font-medium border-l-4 border-blue-600 bg-blue-50 dark:bg-blue-900/20">
+                    Projects
+                </a>
+                <a href="gallery.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Gallery
+                </a>
+                <a href="travel.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Travel
+                </a>
+                <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="relative py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center animate-fade-in">
+                    <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                        My Journey in <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Tech</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                        Explore my passion projects and research work that showcase my journey in technology and innovation
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="py-20 bg-white dark:bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Featured Project -->
+                <div class="mb-20">
+                    <div class="text-center mb-12 animate-fade-in">
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">🎯 Featured Research</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-300">My current thesis project</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 animate-scale-in">
+                        <div class="grid lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <div class="flex items-center mb-6">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-2xl flex items-center justify-center mr-4">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-3xl font-bold text-gray-900 dark:text-white">Financial Scam Detector</h3>
+                                        <p class="text-red-600 dark:text-red-400 font-semibold">AI-Powered Security Research</p>
+                                    </div>
+                                </div>
+                                
+                                <p class="text-gray-700 dark:text-gray-300 text-lg mb-6 leading-relaxed">
+                                    My thesis project focuses on developing an intelligent system to detect and classify financial scams in SMS and chat messages using advanced machine learning algorithms and natural language processing techniques.
+                                </p>
+
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Key Features:</h4>
+                                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                                        <li class="flex items-center">
+                                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            Real-time SMS and chat message analysis
+                                        </li>
+                                        <li class="flex items-center">
+                                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            Multi-class scam classification system
+                                        </li>
+                                        <li class="flex items-center">
+                                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            Deep learning models for pattern recognition
+                                        </li>
+                                        <li class="flex items-center">
+                                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            High accuracy fraud detection system
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="flex flex-wrap gap-3 mb-6">
+                                    <span class="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 px-4 py-2 rounded-full text-sm font-medium">Python</span>
+                                    <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full text-sm font-medium">TensorFlow</span>
+                                    <span class="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-4 py-2 rounded-full text-sm font-medium">NLP</span>
+                                    <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 px-4 py-2 rounded-full text-sm font-medium">Research</span>
+                                </div>
+
+                                <div class="flex flex-col sm:flex-row gap-4">
+                                    <button class="bg-gradient-to-r from-red-500 to-pink-600 text-white px-8 py-3 rounded-full font-semibold hover:from-red-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                        View Research
+                                    </button>
+                                    <button class="border-2 border-red-500 text-red-500 dark:text-red-400 px-8 py-3 rounded-full font-semibold hover:bg-red-500 hover:text-white transition-all duration-300 transform hover:scale-105">
+                                        GitHub Repository
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="relative">
+                                <div class="bg-gradient-to-br from-red-400 to-pink-500 rounded-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6">
+                                        <div class="text-center">
+                                            <div class="w-20 h-20 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                                                <svg class="w-10 h-10 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Fraud Detection</h4>
+                                            <p class="text-gray-600 dark:text-gray-300 text-sm">Protecting users from financial scams</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Projects -->
+                <div class="mb-12 animate-fade-in">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center">🚀 Other Projects</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 text-center mb-12">Innovative solutions and applications</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Secure AI Messaging App -->
+                    <div class="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 animate-scale-in">
+                        <div class="bg-gradient-to-br from-blue-500 to-purple-600 h-48 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                            <div class="text-white text-center relative z-10">
+                                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                </svg>
+                                <h3 class="text-2xl font-bold">Secure AI Messaging</h3>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Personal Secure Communication</h4>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                                A secure messaging application with end-to-end encryption and AI-powered features for enhanced privacy and intelligent communication assistance.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-xs">React</span>
+                                <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-xs">C#</span>
+                                <span class="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-xs">Encryption</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <button class="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
+                                    Live Demo
+                                </button>
+                                <button class="flex-1 border border-blue-500 text-blue-500 dark:text-blue-400 py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-500 hover:text-white transition-all duration-300">
+                                    GitHub
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Literacy AI App -->
+                    <div class="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 animate-scale-in" style="animation-delay: 0.2s;">
+                        <div class="bg-gradient-to-br from-green-500 to-teal-600 h-48 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                            <div class="text-white text-center relative z-10">
+                                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                                <h3 class="text-2xl font-bold">Literacy AI Assistant</h3>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">AI for Education</h4>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                                An AI-powered application designed to help reduce illiteracy in Bangladesh by providing personalized learning experiences and interactive educational tools.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-xs">Python</span>
+                                <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-xs">PyTorch</span>
+                                <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-xs">NLP</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <button class="flex-1 bg-gradient-to-r from-green-500 to-teal-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:from-green-600 hover:to-teal-700 transition-all duration-300">
+                                    Try Demo
+                                </button>
+                                <button class="flex-1 border border-green-500 text-green-500 dark:text-green-400 py-2 px-4 rounded-lg text-sm font-medium hover:bg-green-500 hover:text-white transition-all duration-300">
+                                    GitHub
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Computer Vision Project -->
+                    <div class="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 animate-scale-in" style="animation-delay: 0.4s;">
+                        <div class="bg-gradient-to-br from-orange-500 to-red-600 h-48 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                            <div class="text-white text-center relative z-10">
+                                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <h3 class="text-2xl font-bold">CV Dataset Builder</h3>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Computer Vision Research</h4>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                                Comprehensive dataset building and analysis tools for computer vision research, featuring advanced annotation capabilities and automated preprocessing.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 px-3 py-1 rounded-full text-xs">OpenCV</span>
+                                <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-xs">Python</span>
+                                <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-xs">Computer Vision</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <button class="flex-1 bg-gradient-to-r from-orange-500 to-red-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:from-orange-600 hover:to-red-700 transition-all duration-300">
+                                    View Project
+                                </button>
+                                <button class="flex-1 border border-orange-500 text-orange-500 dark:text-orange-400 py-2 px-4 rounded-lg text-sm font-medium hover:bg-orange-500 hover:text-white transition-all duration-300">
+                                    GitHub
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="py-20 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 animate-fade-in">
+                    <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Technologies I Use</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-300">Tools and frameworks that power my projects</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                    <div class="text-center group hover:scale-110 transition-transform duration-300 animate-scale-in">
+                        <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:shadow-lg transition-shadow duration-300">
+                            <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">Py</span>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Python</p>
+                    </div>
+
+                    <div class="text-center group hover:scale-110 transition-transform duration-300 animate-scale-in" style="animation-delay: 0.1s;">
+                        <div class="w-16 h-16 bg-cyan-100 dark:bg-cyan-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:shadow-lg transition-shadow duration-300">
+                            <span class="text-2xl font-bold text-cyan-600 dark:text-cyan-400">Re</span>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">React</p>
+                    </div>
+
+                    <div class="text-center group hover:scale-110 transition-transform duration-300 animate-scale-in" style="animation-delay: 0.2s;">
+                        <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:shadow-lg transition-shadow duration-300">
+                            <span class="text-2xl font-bold text-purple-600 dark:text-purple-400">C#</span>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">C Sharp</p>
+                    </div>
+
+                    <div class="text-center group hover:scale-110 transition-transform duration-300 animate-scale-in" style="animation-delay: 0.3s;">
+                        <div class="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:shadow-lg transition-shadow duration-300">
+                            <span class="text-2xl font-bold text-orange-600 dark:text-orange-400">TF</span>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">TensorFlow</p>
+                    </div>
+
+                    <div class="text-center group hover:scale-110 transition-transform duration-300 animate-scale-in" style="animation-delay: 0.4s;">
+                        <div class="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:shadow-lg transition-shadow duration-300">
+                            <span class="text-2xl font-bold text-red-600 dark:text-red-400">PT</span>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">PyTorch</p>
+                    </div>
+
+                    <div class="text-center group hover:scale-110 transition-transform duration-300 animate-scale-in" style="animation-delay: 0.5s;">
+                        <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:shadow-lg transition-shadow duration-300">
+                            <span class="text-2xl font-bold text-green-600 dark:text-green-400">CV</span>
+                        </div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">OpenCV</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-gray-400">&copy; 2025 Al Rafi Ahmed. All rights reserved.</p>
+                <p class="text-gray-500 text-sm mt-2">Built with ❤️ using modern web technologies</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+        } else {
+            html.classList.remove('dark');
+            lightIcon.classList.remove('hidden');
+            darkIcon.classList.add('hidden');
+        }
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            } else {
+                localStorage.setItem('theme', 'light');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/95', 'dark:bg-gray-900/95', 'shadow-lg');
+                navbar.classList.remove('bg-white/90', 'dark:bg-gray-900/90');
+            } else {
+                navbar.classList.remove('bg-white/95', 'dark:bg-gray-900/95', 'shadow-lg');
+                navbar.classList.add('bg-white/90', 'dark:bg-gray-900/90');
+            }
+        });
+
+        // Page load animations
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
